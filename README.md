@@ -7,7 +7,7 @@
 2. Start the project
 3. Register a user in /users/register/ endpoint
 4. Login with registered credentials in /users/token/ endpoint
-5. In swagger click "Authorize" button and type Bearer<space>access token from response
+5. In swagger click "Authorize" button and type ```Bearer <access token from response>```
 6. Enjoy other endpoints
 
 ### Tasks
