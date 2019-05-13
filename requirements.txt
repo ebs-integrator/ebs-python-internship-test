@@ -1,0 +1,15 @@
+Django==2.1
+djangorestframework
+django-cors-headers==2.4.0
+requests==2.20.1
+elasticsearch==6.3.1
+drf_util==0.0.12
+drf-yasg==1.11.0
+flex==6.13.2
+swagger-spec-validator==2.4.1
+blinker
+Faker
+coverage
+django-nose
+django-extensions
+djangorestframework_simplejwt
