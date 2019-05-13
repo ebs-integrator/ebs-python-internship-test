@@ -15,6 +15,10 @@
 1. Add in Blog model boolean field ```enabled```
 2. Show in admin blog list the real blog name and status (enabled/disabled): http://prntscr.com/nnsoa8
 3. Make an endpoint for create a blog post (similar as register endpoint)
+4. Create a model ```Comments``` with ```text``` and ```blog``` foreign key
+5. Add Comments in Django Admin
+6. Create an endpoint that creates a comment to a blog post (input: blog_id, text)
+7. In endpoint ```/blog/blog/{id}/``` return the Blog post object and list of comments
 
 
 ### Config
