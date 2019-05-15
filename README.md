@@ -12,6 +12,8 @@
 
 ### Tasks
 
+#### Milestone 1
+
 1. Add in Blog model boolean field ```enabled```
 2. Show in admin blog list the real blog name and status (enabled/disabled): http://prntscr.com/nnsoa8
 3. Make an endpoint for create a blog post (similar as register endpoint)
@@ -20,6 +22,27 @@
 6. Create an endpoint that creates a comment to a blog post (input: blog_id, text)
 7. In endpoint ```/blog/blog/{id}/``` return the Blog post object and list of comments
 
+#### Milestone 2
+
+Develop a task management platform
+
+Screens:
+1. List: http://prntscr.com/novabn
+2. Create: http://prntscr.com/novbj8
+3. View: http://prntscr.com/novbth
+
+Functions:
+1. Register
+2. Login
+3. View list of tasks
+4. Create a task
+5. View my tasks
+6. View Completed tasks
+7. Assign a task to me
+8. Complete a task
+9. Remove task
+10. Add comment to task
+11. View task comments
 
 ### Config
 
