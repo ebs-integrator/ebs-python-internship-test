@@ -43,6 +43,11 @@ Functions:
 9. Remove task
 10. Add comment to task
 11. View task comments
+12. Add notification then task is assigned to me
+13. Add notification then my task in commented
+14. Add notification then commented task is closed
+15. View my notifications
+16. View count of new notifications
 
 ### Config
 
