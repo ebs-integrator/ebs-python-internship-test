@@ -1,4 +1,4 @@
-# Simple DRF blog example and test
+# Simple DRF example and test
 
 ### Setup
 
