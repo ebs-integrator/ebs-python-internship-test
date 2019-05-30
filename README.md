@@ -49,6 +49,19 @@ Functions:
 15. View my notifications
 16. View count of new notifications
 
+#### Milestone 3
+
+New functions for task application
+
+1. Start a timer for my task (send task id and time starts)
+2. Stop timer for the started task (on stop the API will log the time from start in a table)
+3. Add time log for a task on a specific date (send in endpoint task id, date, duration in minutes)
+3. Get a list of time logs records by task ID
+4. On getting tasks endpoint get the sum of the time on each task
+5. Get the logged time in last month by date
+6. Get top 20 tasks in last month that has more time
+
+
 ### Config
 
 For run project in another ENV:
