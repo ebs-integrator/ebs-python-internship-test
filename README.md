@@ -1,26 +1,37 @@
-# Simple DRF example and test
+# Django Rest Framework example and test
+
+This repository contains a base project for intership program at EBS Integrator. Fork it and bring it to the next level.
+
+### References
+
+1. https://www.djangoproject.com/
+2. https://www.django-rest-framework.org/
+3. https://restfulapi.net/
+4. https://swagger.io/docs/specification/2-0/what-is-swagger/
 
 ### Setup
 
-0. In /config/ copy development_sample.py as development.py
+Some steps before start work on tasks.
+
+0. In /config/ copy development_sample.py as development.py, here will be your application settings
 1. Database is SQLite, local, and execute ```python manage.py migrate```
-2. Start the project
-3. Register a user in /users/register/ endpoint
+2. Start the project ```python manage.py runserver```
+3. Open website and register a user in /users/register/ endpoint
 4. Login with registered credentials in /users/token/ endpoint
 5. In swagger click "Authorize" button and type ```Bearer <access token from response>```
-6. Enjoy other endpoints
+6. Let's do first milestone!
 
 ### Tasks
 
 #### Milestone 1
 
-1. Add in Blog model boolean field ```enabled```
-2. Show in admin blog list the real blog name and status (enabled/disabled): http://prntscr.com/nnsoa8
-3. Make an endpoint for create a blog post (similar as register endpoint)
-4. Create a model ```Comments``` with ```text``` and ```blog``` foreign key
-5. Add Comments in Django Admin
+1. Add in Blog model a boolean field ```enabled``` to make some posts published or unpublished
+2. Show in Django Admin blog list the real blog name and status (enabled/disabled): http://prntscr.com/nnsoa8 docs: https://docs.djangoproject.com/en/3.0/ref/contrib/admin/
+3. Make an endpoint for create a blog post (similar as register endpoint) that will add a new record in blog table
+4. Create a new model ```Comments``` with ```text``` and ```blog``` foreign key, here we will save comments for each blog post
+5. Add Comments for management in Django Admin
 6. Create an endpoint that creates a comment to a blog post (input: blog_id, text)
-7. In endpoint ```/blog/blog/{id}/``` return the Blog post object and list of comments
+7. In endpoint ```/blog/blog/{id}/``` return the Blog post object and list of comments.
 
 #### Milestone 2
 
