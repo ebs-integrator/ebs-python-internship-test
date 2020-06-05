@@ -13,7 +13,6 @@ This repository contains a base project for intership program at EBS Integrator.
 
 Some steps before start work on tasks.
 
-0. In /config/ copy development_sample.py as development.py, here will be your application settings
 1. Database is SQLite, local, and execute ```python manage.py migrate```
 2. Start the project ```python manage.py runserver```
 3. Open website and register a user in /users/register/ endpoint
