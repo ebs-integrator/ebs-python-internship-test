@@ -9,6 +9,10 @@ This repository contains a base project for intership program at EBS Integrator.
 3. https://restfulapi.net/
 4. https://swagger.io/docs/specification/2-0/what-is-swagger/
 
+## Requirements
+* [Python 3.8](https://docs.python.org/3.8)
+* [Django 3.0](https://docs.djangoproject.com/en/3.0)
+
 ### Setup
 
 Some steps before start work on tasks.
