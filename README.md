@@ -17,12 +17,13 @@ This repository contains a base project for intership program at EBS Integrator.
 
 Some steps before start work on tasks.
 
-1. Database is SQLite, local, and execute ```python manage.py migrate```
-2. Start the project ```python manage.py runserver```
-3. Open website and register a user in /users/register/ endpoint
-4. Login with registered credentials in /users/token/ endpoint
-5. In swagger click "Authorize" button and type ```Bearer <access token from response>```
-6. Let's do first milestone!
+1. Install python requirements ```pip install -r requirements.txt```
+2. Database is SQLite, local, and execute ```python manage.py migrate```
+3. Start the project ```python manage.py runserver```
+4. Open website and register a user in /users/register/ endpoint
+5. Login with registered credentials in /users/token/ endpoint
+6. In swagger click "Authorize" button and type ```Bearer <access token from response>```
+7. Let's do first milestone!
 
 ### Tasks
 
