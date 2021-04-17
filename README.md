@@ -1,6 +1,6 @@
 # Django Rest Framework example and test
 
-This repository contains a base project for intership program at EBS Integrator. Fork it and bring it to the next level.
+This repository contains a base project for internship program at EBS Integrator. Fork it and bring it to the next level.
 
 ### References
 
@@ -11,7 +11,7 @@ This repository contains a base project for intership program at EBS Integrator.
 
 ## Requirements
 * [Python 3.8](https://docs.python.org/3.8)
-* [Django 3.0](https://docs.djangoproject.com/en/3.0)
+* [Django 3.1](https://docs.djangoproject.com/en/3.1)
 
 ### Setup
 
@@ -39,58 +39,56 @@ Some steps before start work on tasks.
 
 #### Milestone 2
 
-Develop a task management platform
+Based on previous experience, create a new project with a simple Task Management system. 
+You need to set up DB, DRF and Swagger to build a beautiful API.
 
-Screens:
+These screens will help you to imagine the app:
 1. List: http://prntscr.com/novabn
 2. Create: http://prntscr.com/novbj8
 3. View: http://prntscr.com/novbth
 
 Functions:
-1. Register
-2. Login
-3. View list of tasks
-4. Create a task
-5. View my tasks
-6. View Completed tasks
-7. Assign a task to me
-8. Complete a task
-9. Remove task
-10. Add comment to task
-11. View task comments
-12. Add notification then task is assigned to me
-13. Add notification then my task in commented
-14. Add notification then commented task is closed
-15. View my notifications
-16. View count of new notifications
+1. Register - user send first name, last name, email, password and receive JWT token for authentication
+2. Login - user send email, password and receive JWT token for authentication
+3. Get list of users - user receive a list with id and full name of all users from application
+4. Create a task - user send title, description and receive new task id, the new task is assigned to current user
+5. View list of tasks - user receive a list with id and title of all created tasks from application
+6. View task details by id - user send task_id and receive task details: id, title, description, status, owner
+7. View my tasks - user receive a list with id and title of tasks assigned to him
+8. View Completed tasks - user receive a list with id and title of tasks with status completed
+9. Assign a task to user - user send task_id and user_id and receive successful response after update task owner
+10. Complete a task - user send task_id and receive successful response after update of task status in completed
+11. Remove task - user send task_id and receive successful response after task deletion
+12. Add comment to task - user send task_id, comment text and receive id of the new comment
+13. View task comments - user send task id and receive list of all comments added to this task
+14. Add email notification then task is assigned to me
+15. Add email notification then my task in commented
+16. Add email notification then commented task is completed
+17. Search task by title - user send search term and receive list of tasks that match 
 
 #### Milestone 3
 
-New functions for task application
+Add these new functions to your task application to help users to track time spent on completion of each task.
+User will start time when start working on task and stop it when complete the task or take a pause.
 
-1. Start a timer for my task (send task id and time starts)
-2. Stop timer for the started task (on stop the API will log the time from start in a table)
-3. Add time log for a task on a specific date (send in endpoint task id, date, duration in minutes)
-3. Get a list of time logs records by task ID
-4. On getting tasks endpoint get the sum of the time on each task
-5. Get the logged time in last month by date
-6. Get top 20 tasks in last month that has more time
-
-
-### Config
-
-For run project in another ENV:
-
-```bash
-DJANGO_ENV = production
-```
-
-default value is ```development```
+1. Start a timer for my task - user send task id and receive successful response after logging the start of task in DB
+2. Stop timer for the started task - user send task id and receive successful response after adding a time log for this task with duration of work for current date
+3. Add time log for a task on a specific date - user manually send in task id, date, duration in minutes and receive successful response of save
+3. Get a list of time logs records by task - user send task id and receive list of all time logs created for this task 
+4. Change get list of tasks endpoint get receive the sum of the time in minutes for each task
+5. Get the logged time in last month - user send a request and receive total amount of time logged by him in last month
+6. Get top 20 tasks in last month by time - user send request and receive list of id, title, time amount of tasks with bigger logged amount of time
 
 
-### Create a new app
+#### Milestone 4
 
-```bash
-mkdir -p apps/name_of_app
-python manage.py startapp name_of_app apps/name_of_app
-```
+In this milestone we start to improve our application.
+
+1. Add unit tests for each endpoint https://www.django-rest-framework.org/api-guide/testing/
+2. Add coverage package and generate report to be sure in 100% test coverage https://docs.djangoproject.com/en/3.2/topics/testing/advanced/#integration-with-coverage-py
+3. Install PostgreSQL docker container and move your app on PostgreSQL (edit settings.py)
+4. Create a script that will add random 25.000 tasks and 50.000 time logs
+4. Install PGHero docker container and connect it to your db https://github.com/ankane/pghero/blob/master/guides/Docker.md
+5. Manual test all endpoints and check with PGHero that all sql queries use db indexes
+6. Install Redis docker container and configure Django to cache with 1 minute TTL the endpoint with Top 20 tasks by time for each user https://github.com/jazzband/django-redis
+7. Create Dockerfile for your application to run it with docker-compose command
