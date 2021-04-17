@@ -1,4 +1,4 @@
-# Django Rest Framework example and test
+# Django Rest Framework - Internship tasks
 
 This repository contains a base project for internship program at EBS Integrator. Fork it and bring it to the next level.
 
@@ -25,9 +25,9 @@ Some steps before start work on tasks.
 6. In swagger click "Authorize" button and type ```Bearer <access token from response>```
 7. Let's do first milestone!
 
-### Tasks
+### Milestone 1
 
-#### Milestone 1
+We start with some changes to understand the project code
 
 1. Add in Blog model a boolean field ```enabled``` to make some posts published or unpublished
 2. Show in Django Admin blog list the real blog name and status (enabled/disabled): http://prntscr.com/nnsoa8 docs: https://docs.djangoproject.com/en/3.0/ref/contrib/admin/
@@ -37,7 +37,7 @@ Some steps before start work on tasks.
 6. Create an endpoint that creates a comment to a blog post (input: blog_id, text)
 7. In endpoint ```/blog/blog/{id}/``` return the Blog post object and list of comments.
 
-#### Milestone 2
+### Milestone 2
 
 Based on previous experience, create a new project with a simple Task Management system. 
 You need to set up DB, DRF and Swagger to build a beautiful API.
@@ -47,7 +47,7 @@ These screens will help you to imagine the app:
 2. Create: http://prntscr.com/novbj8
 3. View: http://prntscr.com/novbth
 
-Functions:
+**Tasks:**
 1. Register - user send first name, last name, email, password and receive JWT token for authentication
 2. Login - user send email, password and receive JWT token for authentication
 3. Get list of users - user receive a list with id and full name of all users from application
@@ -66,7 +66,7 @@ Functions:
 16. Add email notification then commented task is completed
 17. Search task by title - user send search term and receive list of tasks that match 
 
-#### Milestone 3
+### Milestone 3
 
 Add these new functions to your task application to help users to track time spent on completion of each task.
 User will start time when start working on task and stop it when complete the task or take a pause.
@@ -79,8 +79,7 @@ User will start time when start working on task and stop it when complete the ta
 5. Get the logged time in last month - user send a request and receive total amount of time logged by him in last month
 6. Get top 20 tasks in last month by time - user send request and receive list of id, title, time amount of tasks with bigger logged amount of time
 
-
-#### Milestone 4
+### Milestone 4
 
 In this milestone we start to improve our application.
 
