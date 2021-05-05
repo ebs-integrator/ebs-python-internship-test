@@ -63,7 +63,7 @@ These screens will help you to imagine the app:
 13. View task comments - user send task id and receive list of all comments added to this task
 14. Add email notification when task is assigned to me
 15. Add email notification when my task is commented
-16. Add email notification when task is completed
+16. Add email notification when commented task is completed
 17. Search task by title - user send search term and receive list of tasks that match 
 
 ### Milestone 3
