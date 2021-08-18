@@ -43,7 +43,7 @@ Based on previous experience, create a new project with a simple Task Management
 You need to set up DB, DRF and Swagger to build a beautiful API.
 
 These screens will help you to imagine the app:
-1. List: http://prntscr.com/novabn
+1. List: https://prnt.sc/1q9sn7i
 2. Create: http://prntscr.com/novbj8
 3. View: http://prntscr.com/novbth
 
