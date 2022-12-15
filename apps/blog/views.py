@@ -7,6 +7,7 @@ from apps.blog.models import Category, Blog
 from apps.blog.serializers import CategorySerializer, BlogSerializer
 
 
+# Create your views here.
 class CategoryViewSet(viewsets.ModelViewSet):
     serializer_class = CategorySerializer
     queryset = Category.objects.all()
@@ -20,7 +21,6 @@ class BlogListView(GenericAPIView):
 
     def get(self, request):
         blogs = Blog.objects.all()
-
         return Response(BlogSerializer(blogs, many=True).data)
 
 
@@ -32,5 +32,4 @@ class BlogItemView(GenericAPIView):
 
     def get(self, request, pk):
         blog = get_object_or_404(Blog.objects.filter(pk=pk))
-
         return Response(BlogSerializer(blog).data)

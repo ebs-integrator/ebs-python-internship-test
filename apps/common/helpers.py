@@ -9,5 +9,5 @@ schema_view = get_schema_view(
         description="Enjoy",
     ),
     public=True,
-    permission_classes=(AllowAny,),
+    permission_classes=[AllowAny],
 )

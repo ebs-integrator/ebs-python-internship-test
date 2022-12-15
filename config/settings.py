@@ -38,12 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     # Third party apps
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
     'drf_yasg',
-    'django_nose',
+
     # Local apps
     'apps.common',
     'apps.users',
@@ -59,8 +60,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     # Third party middleware
     'corsheaders.middleware.CorsMiddleware',
+
     # Local middleware
     'apps.common.middlewares.ApiMiddleware',
 ]
@@ -190,13 +193,6 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DATE_FORMAT = "%Y-%m-%d %H:%m"
-
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
-
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=' + ','.join([app + '.views' for app in INSTALLED_APPS if app.startswith('apps.')]),
-]
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 

@@ -33,8 +33,8 @@ https://docs.djangoproject.com/en/3.2/intro/install/
 1. Install python requirements ```pip install -r requirements.txt```
 2. Database is SQLite, local, and execute ```python manage.py migrate```
 3. Start the project ```python manage.py runserver```
-4. Open website and register a user in /users/register/ endpoint
-5. Login with registered credentials in /users/token/ endpoint
+4. Open website and register a user in /users/register endpoint
+5. Login with registered credentials in /users/token endpoint
 6. In swagger click "Authorize" button and type ```Bearer <access token from response>```
 7. Let's do first milestone!
 
@@ -57,7 +57,7 @@ We start with some changes to understand the project code
 4. Create a new model ```Comments``` with ```text``` and ```blog``` foreign key, here we will save comments for each blog post.
 5. Add Comments for management in Django Admin (ref: https://docs.djangoproject.com/en/3.2/ref/contrib/admin/#modeladmin-objects)
 6. Create an endpoint that creates a comment to a blog post (input: blog_id, text)
-7. In endpoint ```/blog/blog/{id}/``` return the Blog post object and list of comments.
+7. In endpoint ```/blog/blog/{id}``` return the Blog post object and list of comments.
 
 ### Milestone 2
 
@@ -117,10 +117,10 @@ User will start time when start working on task and stop it when complete the ta
 1. Start a timer for my task - user send task id and receive successful response after logging the start of task in DB
 2. Stop timer for the started task - user send task id and receive successful response after adding a time log for this task with duration of work for current date
 3. Add time log for a task on a specific date - user manually send in task id, date, duration in minutes and receive successful response of save
-3. Get a list of time logs records by task - user send task id and receive list of all time logs created for this task 
-4. Change get list of tasks endpoint get receive the sum of the time in minutes for each task
-5. Get the logged time in last month - user send a request and receive total amount of time logged by him in last month
-6. Get top 20 tasks in last month by time - user send request and receive list of id, title, time amount of tasks with bigger logged amount of time
+4. Get a list of time logs records by task - user send task id and receive list of all time logs created for this task 
+5. Change get list of tasks endpoint get receive the sum of the time in minutes for each task
+6. Get the logged time in last month - user send a request and receive total amount of time logged by him in last month
+7. Get top 20 tasks in last month by time - user send request and receive list of id, title, time amount of tasks with bigger logged amount of time
 
 ### Milestone 4
 
@@ -139,10 +139,10 @@ In this milestone we start to improve our application.
 2. Add coverage package and generate report to be sure in 100% test coverage https://docs.djangoproject.com/en/3.2/topics/testing/advanced/#integration-with-coverage-py
 3. Install PostgreSQL docker container and move your app on PostgreSQL (edit settings.py)
 4. Create a script that will add random 25.000 tasks and 50.000 time logs (use https://docs.djangoproject.com/en/4.0/howto/custom-management-commands/)
-4. Install PGHero docker container and connect it to your db https://github.com/ankane/pghero/blob/master/guides/Docker.md
-5. Manual test all endpoints and check with PGHero that all sql queries use db indexes, after insert of thousands of tasks some endpoints can perform slow
-6. Install Redis docker container and configure Django to cache with 1 minute TTL the endpoint with Top 20 tasks by time for each user https://github.com/jazzband/django-redis
-7. Create Dockerfile for your application to run it with docker-compose command
+5. Install PGHero docker container and connect it to your db https://github.com/ankane/pghero/blob/master/guides/Docker.md
+6. Manual test all endpoints and check with PGHero that all sql queries use db indexes, after insert of thousands of tasks some endpoints can perform slow
+7. Install Redis docker container and configure Django to cache with 1 minute TTL the endpoint with Top 20 tasks by time for each user https://github.com/jazzband/django-redis
+8. Create Dockerfile for your application to run it with docker-compose command
 
 ## Congratulations!
 
@@ -150,5 +150,5 @@ Congratulations on your job well done. We appreciate your dedication, and we loo
 
 ### Next steps
 
-1. Think and design your own project, what startup would you like to build? do it now!
+1. Think and design your own project, what startup would you like to build? Do it now!
 2. With your mentor plan some tasks from real running projects

@@ -4,8 +4,10 @@ from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
 
+# Create your tests here.
+
 class TestUsers(TestCase):
-    fixtures = ["initial_data"]
+    fixtures = ["users"]
 
     def setUp(self) -> None:
         self.client = APIClient()
