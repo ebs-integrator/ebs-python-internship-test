@@ -9,14 +9,17 @@ class HealthView(GenericAPIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
-        return Response({
-            'live': True,
-        })
+        return Response(
+            {
+                "live": True,
+            }
+        )
 
 
 class ProtectedTestView(GenericAPIView):
-
     def get(self, request):
-        return Response({
-            'live': True,
-        })
+        return Response(
+            {
+                "live": True,
+            }
+        )

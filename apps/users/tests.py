@@ -5,7 +5,7 @@ from rest_framework.test import APIClient
 
 
 class TestUsers(TestCase):
-    fixtures = ['initial_data']
+    fixtures = ["initial_data"]
 
     def setUp(self) -> None:
         self.client = APIClient()
@@ -13,10 +13,13 @@ class TestUsers(TestCase):
         self.test_user1 = User.objects.get(email="user1@email.com")
 
     def test_register(self):
-        response = self.client.post(reverse('token_register'), {
-            "first_name": "firstname2",
-            "last_name": "lastname2",
-            "username": "username2",
-            "password": "testpwd2"
-        })
+        response = self.client.post(
+            reverse("token_register"),
+            {
+                "first_name": "firstname2",
+                "last_name": "lastname2",
+                "username": "username2",
+                "password": "testpwd2",
+            },
+        )
         self.assertEqual(response.status_code, 200)

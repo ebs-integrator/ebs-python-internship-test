@@ -21,7 +21,7 @@ This repository contains a base project for internship program at EBS Integrator
 7. https://www.django-antipatterns.com/ - A resource with most frequent mistakes in Django development
 
 #### Project requirements
-* [Python 3.9](https://docs.python.org/3.9)
+* [Python 3.10](https://docs.python.org/3.10)
 * [Django 3.2](https://docs.djangoproject.com/en/3.2)
 
 ### First steps to run the project

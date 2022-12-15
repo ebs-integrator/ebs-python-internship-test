@@ -18,7 +18,10 @@ class ApiMiddleware(MiddlewareMixin):
     def process_exception(request, response):
         logger.error(traceback.format_exc())
 
-        return JsonResponse({
-            'exception': str(response),
-            'detail': _('Something Went Wrong. Please contact support')
-        }, status=500)
+        return JsonResponse(
+            {
+                "exception": str(response),
+                "detail": _("Something Went Wrong. Please contact support"),
+            },
+            status=500,
+        )
