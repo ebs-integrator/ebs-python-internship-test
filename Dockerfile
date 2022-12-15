@@ -1,4 +1,4 @@
-FROM python:3.9-slim-stretch
+FROM python:3.10
 
 # Install missing libs
 RUN apt-get  update \
