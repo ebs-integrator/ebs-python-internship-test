@@ -2,7 +2,9 @@ from rest_framework import serializers
 
 from apps.blog.models import Category, Blog
 
+
 # Create your serializers here.
+
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:

@@ -5,6 +5,7 @@ from rest_framework.response import Response
 
 # Create your views here.
 
+
 class HealthView(GenericAPIView):
     authentication_classes = ()
     permission_classes = (AllowAny,)

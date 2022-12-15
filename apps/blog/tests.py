@@ -6,6 +6,8 @@ from rest_framework.test import APIClient
 
 
 # Create your tests here.
+
+
 class BlogTests(TestCase):
     fixtures = ["users", "blogs", "categories"]
 
@@ -44,14 +46,16 @@ class CategoryTests(TestCase):
         self.assertEqual(1, len(response.data))
 
     def test_create(self):
-        response = self.client.post(reverse("category-list"), {"title": "Category 2", "slug": "category-2"})
+        response = self.client.post(
+            reverse("category-list"), {"title": "Category 2", "slug": "category-2"}
+        )
         self.assertEqual(status.HTTP_201_CREATED, response.status_code)
         self.assertEqual("Category 2", response.data["title"])
 
     def test_update(self):
         response = self.client.put(
             reverse("category-detail", kwargs={"pk": 1}),
-            {"title": "Category 2", "slug": "category-2"}
+            {"title": "Category 2", "slug": "category-2"},
         )
         self.assertEqual(status.HTTP_200_OK, response.status_code)
         self.assertEqual("Category 2", response.data["title"])

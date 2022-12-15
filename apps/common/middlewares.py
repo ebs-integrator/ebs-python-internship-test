@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 # Create your middleware here.
 
+
 class ApiMiddleware(MiddlewareMixin):
     @staticmethod
     def process_request(request):
