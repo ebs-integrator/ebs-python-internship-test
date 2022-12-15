@@ -1,8 +1,7 @@
+from django.contrib.auth.models import User
 from django.test import TestCase
 from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
-
-from django.contrib.auth.models import User
 
 
 class TestCommon(TestCase):
@@ -21,4 +20,3 @@ class TestCommon(TestCase):
         self.client.force_authenticate(user=self.test_user1)
         response = self.client.get(reverse('protected_view'), )
         self.assertEqual(response.status_code, 200)
-

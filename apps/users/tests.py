@@ -1,4 +1,3 @@
-
 from django.contrib.auth.models import User
 from django.test import TestCase
 from rest_framework.reverse import reverse
@@ -21,4 +20,3 @@ class TestUsers(TestCase):
             "password": "testpwd2"
         })
         self.assertEqual(response.status_code, 200)
-
