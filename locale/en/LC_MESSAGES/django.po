@@ -20,24 +20,24 @@ msgstr ""
 
 #: apps/common/middlewares.py:27
 msgid "Something Went Wrong. Please contact support"
-msgstr ""
+msgstr "Something Went Wrong. Please contact support"
 
 #: apps/common/permissions.py:9
 msgid "You do not have permission to perform this action."
-msgstr ""
+msgstr "You do not have permission to perform this action."
 
 #: apps/common/validators.py:28
 msgid "This field must contains only numbers!"
-msgstr ""
+msgstr "This field must contains only numbers!"
 
 #: config/settings.py:122
 msgid "Romanian"
-msgstr ""
+msgstr "Romanian"
 
 #: config/settings.py:123
 msgid "Russian"
-msgstr ""
+msgstr "Russian"
 
 #: config/settings.py:124
 msgid "English"
-msgstr ""
+msgstr "English"
