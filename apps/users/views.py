@@ -20,14 +20,18 @@ class RegisterUserView(GenericAPIView):
     def post(self, request):
         validated_data = request.serializer.validated_data
 
+        # Get password from validated data
+        password = validated_data.pop("password")
+
+        # Create user
         user = User.objects.create(
-            first_name=validated_data["first_name"],
-            last_name=validated_data["last_name"],
-            username=validated_data["username"],
+            **validated_data,
             is_superuser=True,
             is_staff=True,
         )
-        user.set_password(validated_data["password"])
+
+        # Set password
+        user.set_password(password)
         user.save()
 
         return Response(UserSerializer(user).data)

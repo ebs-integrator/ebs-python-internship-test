@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'drf_yasg',
     'django_nose',
-    'django_extensions',
     'apps.common',
     'apps.users',
     'apps.blog',
