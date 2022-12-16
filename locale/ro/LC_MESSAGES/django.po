@@ -1,0 +1,44 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-12-15 20:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
+
+#: apps/common/middlewares.py:27
+msgid "Something Went Wrong. Please contact support"
+msgstr "Ceva nu a mers bine. Vă rugăm să contactați suportul"
+
+#: apps/common/permissions.py:9
+msgid "You do not have permission to perform this action."
+msgstr "Nu aveți permisiunea de a efectua această acțiune."
+
+#: apps/common/validators.py:28
+msgid "This field must contains only numbers!"
+msgstr "Acest câmp trebuie să conțină doar numere!"
+
+#: config/settings.py:122
+msgid "Romanian"
+msgstr "Română"
+
+#: config/settings.py:123
+msgid "Russian"
+msgstr "Rusă"
+
+#: config/settings.py:124
+msgid "English"
+msgstr "Engleză"

@@ -1,0 +1,11 @@
+[
+  {
+    "model": "blog.Category",
+    "pk": 1,
+    "fields": {
+      "title": "Category 1",
+      "slug": "category-1"
+    }
+  }
+]
+

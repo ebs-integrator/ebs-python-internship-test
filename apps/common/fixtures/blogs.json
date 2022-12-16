@@ -1,0 +1,14 @@
+[
+  {
+    "model": "blog.Blog",
+    "pk": 1,
+    "fields": {
+      "title": "My first blog",
+      "slug": "my-first-blog",
+      "body": "This is my first blog post",
+      "posted": "2022-06-30",
+      "category": 1
+    }
+  }
+]
+

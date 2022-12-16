@@ -1,7 +1,9 @@
-# Create your views here.
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+
+
+# Create your views here.
 
 
 class HealthView(GenericAPIView):
@@ -9,14 +11,17 @@ class HealthView(GenericAPIView):
     permission_classes = (AllowAny,)
 
     def get(self, request):
-        return Response({
-            'live': True,
-        })
+        return Response(
+            {
+                "live": True,
+            }
+        )
 
 
 class ProtectedTestView(GenericAPIView):
-
     def get(self, request):
-        return Response({
-            'live': True,
-        })
+        return Response(
+            {
+                "live": True,
+            }
+        )
