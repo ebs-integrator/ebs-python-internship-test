@@ -15,3 +15,9 @@ class Blog(models.Model):
     body = models.TextField()
     posted = models.DateField(db_index=True, auto_now_add=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    enabled = models.BooleanField(default=False)
+
+
+class Comment(models.Model):
+    text = models.TextField()
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
