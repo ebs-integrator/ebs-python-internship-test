@@ -10,3 +10,8 @@ class ReadOnly(BasePermission):
 
     def has_permission(self, request, view):
         return request.method in SAFE_METHODS
+
+class All(BasePermission):
+
+    def has_permission(self, request, view):
+        return True
