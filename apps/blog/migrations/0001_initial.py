@@ -29,6 +29,14 @@ class Migration(migrations.Migration):
                 ('body', models.TextField()),
                 ('posted', models.DateField(auto_now_add=True, db_index=True)),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='blog.category')),
+                ('enabled',models.BooleanField()),
             ],
-        ),
+        ), 
+        migrations.CreateModel(
+            name='Comments',
+            fields=[
+                ('blog_id', models.IntegerField()),
+                ('text',models.TextField()),
+            ]
+        )
     ]

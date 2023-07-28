@@ -1,6 +1,6 @@
 from django.urls import path
 
-from apps.blog.views import CategoryViewSet, BlogListView, BlogItemView
+from apps.blog.views import CategoryViewSet, BlogListView, BlogItemView , CommentsViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter(trailing_slash=False)
@@ -8,6 +8,11 @@ router.register(
     r"categories",
     CategoryViewSet,
     basename="category",
+)
+router.register(
+    r"comments",
+    CommentsViewSet,
+    basename="comments"
 )
 
 urlpatterns = router.urls
