@@ -1,24 +1,22 @@
 from django.contrib.auth.models import User
-from drf_util.decorators import serialize_decorator
 from rest_framework.generics import GenericAPIView
 from rest_framework.permissions import AllowAny
+from rest_framework.request import Request
 from rest_framework.response import Response
 
 from apps.users.serializers import UserSerializer
 
 
-# Create your views here.
-
-
 class RegisterUserView(GenericAPIView):
     serializer_class = UserSerializer
-
     permission_classes = (AllowAny,)
     authentication_classes = ()
 
-    @serialize_decorator(UserSerializer)
-    def post(self, request):
-        validated_data = request.serializer.validated_data
+    def post(self, request: Request) -> Response:
+        #  Validate data
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        validated_data = serializer.validated_data
 
         # Get password from validated data
         password = validated_data.pop("password")
@@ -34,4 +32,4 @@ class RegisterUserView(GenericAPIView):
         user.set_password(password)
         user.save()
 
-        return Response(UserSerializer(user).data)
+        return Response(self.serializer_class(user).data)

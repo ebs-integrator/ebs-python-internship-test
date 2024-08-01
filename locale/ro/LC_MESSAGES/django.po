@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-15 20:58+0000\n"
+"POT-Creation-Date: 2024-07-31 14:20+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,26 +19,26 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: apps/common/middlewares.py:27
+#: .\apps\common\middlewares.py:27
 msgid "Something Went Wrong. Please contact support"
 msgstr "Ceva nu a mers bine. Vă rugăm să contactați suportul"
 
-#: apps/common/permissions.py:9
+#: .\apps\common\permissions.py:11
 msgid "You do not have permission to perform this action."
 msgstr "Nu aveți permisiunea de a efectua această acțiune."
 
-#: apps/common/validators.py:28
+#: .\apps\common\validators.py:27
 msgid "This field must contains only numbers!"
 msgstr "Acest câmp trebuie să conțină doar numere!"
 
-#: config/settings.py:122
+#: .\config\settings.py:115
 msgid "Romanian"
 msgstr "Română"
 
-#: config/settings.py:123
+#: .\config\settings.py:116
 msgid "Russian"
 msgstr "Rusă"
 
-#: config/settings.py:124
+#: .\config\settings.py:117
 msgid "English"
 msgstr "Engleză"

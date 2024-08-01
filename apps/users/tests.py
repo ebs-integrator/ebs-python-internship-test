@@ -4,9 +4,6 @@ from rest_framework.reverse import reverse
 from rest_framework.test import APIClient
 
 
-# Create your tests here.
-
-
 class TestUsers(TestCase):
     fixtures = ["users"]
 
@@ -15,7 +12,7 @@ class TestUsers(TestCase):
         # check data in fixture json file
         self.test_user1 = User.objects.get(email="user1@email.com")
 
-    def test_register(self):
+    def test_register(self) -> None:
         response = self.client.post(
             reverse("token_register"),
             {

@@ -1,7 +1,7 @@
 """config URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+    https://docs.djangoproject.com/en/4.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -13,15 +13,17 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path, include
 
-from apps.common.helpers import schema_view
+from django.contrib import admin
+from django.urls import include, path
+from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 urlpatterns = [
-    path("", schema_view.with_ui("swagger", cache_timeout=0), name="schema-swagger-ui"),
+    path("", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
+    path("schema", SpectacularAPIView.as_view(), name="schema"),
+    path("redoc", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
+    path("", include("apps.blog.urls")),
     path("admin/", admin.site.urls),
     path("common/", include("apps.common.urls")),
-    path("blog/", include("apps.blog.urls")),
     path("users/", include("apps.users.urls")),
 ]

@@ -1,0 +1,55 @@
+[tool.poetry]
+name = "ebs-python-internship-test"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Cuznetov <daniel.cuznetov@ebs-integrator.com>"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "4.2.14"
+djangorestframework = "3.15.2"
+djangorestframework-simplejwt = "5.3.1"
+django-cors-headers = "4.4.0"
+drf-spectacular = "0.27.2"
+pre-commit = "^3.8.0"
+ruff = "^0.5.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+target-version = "py312"
+
+select = [
+    "E", # pycodestyle
+    "F", # Pyflakes
+    "I", # isort
+    "B", # flake8-bugbear
+    "ASYNC", # flake8-async
+    "T10", # flake8-debugger
+    "ISC", # flake8-implicit-str-concat
+    "ICN", # flake8-import-conventions
+    "PIE", # flake8-pie
+    "BLE", # flake8-blind-except
+    "SIM", # flake8-simplify
+    "PTH", # flake8-use-pathlib
+    "FIX", # flake8 - fix me
+    "N", # pep8-naming
+    "UP", # pyupgrade
+]
+ignore = [
+    "ISC001", # Disabled to avoid unexpected behaviour on `ruff format .`
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+line-ending = "auto"
+
