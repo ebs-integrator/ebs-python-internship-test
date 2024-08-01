@@ -33,8 +33,5 @@ EXPOSE 8000
 # Environemnt variables
 ENV DJANGO_SETTINGS_MODULE=config.settings GUNICORN_BIND=0.0.0.0:8000 GUNICORN_WORKERS=4 GUNICORN_THREADS=2 GUNICORN_TIMEOUT=300 GUNICORN_LOG_LEVEL=info
 
-
-COPY /startup.sh /code
-
 # Running Python Application
 CMD bash startup.sh
