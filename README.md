@@ -2,13 +2,13 @@
 
 This repository contains a base project for internship program at EBS Integrator, each candidate for position of Junior Backend Developer must be able to develop all the tasks in the following lists. Fork it and bring it to the next level. 
 
-### Worflow
+### Workflow
 
 1. Before starting this program you should know Python or another programming language at a level beginner, and understand syntax, variables, functions, algorithms, etc. If you have lacked in language understanding then start with https://www.learnpython.org/
 2. First milestone is to prove that you are ready for internship program
 3. Before each milestone estimate each task in hours of work to understand how much time you need to achieve the finish, don't worry if your estimations are wrong because you don't have experience.
 4. After each milestone or sequence of tasks create a merge request to your mentor to receive feedback, after code review you will have something to fix this will improve your coding skills
-5. Be focused on tasks and ask questions when you don't understand something and you didn't find anything on Google (googling is a base skill for developers)
+5. Be focused on tasks and ask questions when you don't understand something and you did't find anything on Google (googling is a base skill for developers)
 
 #### References
 
@@ -21,22 +21,24 @@ This repository contains a base project for internship program at EBS Integrator
 7. https://www.django-antipatterns.com/ - A resource with most frequent mistakes in Django development
 
 #### Project requirements
-* [Python 3.10](https://docs.python.org/3.10)
-* [Django 3.2](https://docs.djangoproject.com/en/3.2)
+* [Python 3.12](https://docs.python.org/3.12)
+* [Django 4.2](https://docs.djangoproject.com/en/4.2)
 
 ### First steps to run the project
 
 Some steps before start work on tasks.
 
-https://docs.djangoproject.com/en/3.2/intro/install/
+https://docs.djangoproject.com/en/4.2/intro/install/
 
-1. Install python requirements ```pip install -r requirements.txt```
-2. Database is SQLite, local, and execute ```python manage.py migrate```
-3. Start the project ```python manage.py runserver```
-4. Open website and register a user in /users/register endpoint
-5. Login with registered credentials in /users/token endpoint
-6. In swagger click "Authorize" button and type ```Bearer <access token from response>```
-7. Let's do first milestone!
+1. Install poetry ```pip install poetry```
+2. Install python requirements ```poetry install```
+3. Install pre-commit hooks ```pre-commit install```
+4. Database is SQLite, local, and execute ```python manage.py migrate```
+5. Start the project ```python manage.py runserver```
+6. Open website and register a user in /users/register endpoint
+7. Login with registered credentials in /users/token endpoint
+8. In swagger click "Authorize" button and type ```Bearer <access token from response>```
+9. Let's do first milestone!
 
 ### Milestone 1
 
@@ -51,11 +53,11 @@ We start with some changes to understand the project code
 
 #### Tasks
 
-1. Add in Blog model a boolean field ```enabled``` to make some posts published or unpublished (ref: https://docs.djangoproject.com/en/3.2/ref/models/fields/#booleanfield)
-2. Open in Django Admin (access /admin website section) and add in Blog list the real blog name and status (enabled/disabled): http://prntscr.com/nnsoa8 (ref: https://docs.djangoproject.com/en/3.2/ref/contrib/admin/)
+1. Add in Blog model a boolean field ```enabled``` to make some posts published or unpublished (ref: https://docs.djangoproject.com/en/4.2/ref/models/fields/#booleanfield)
+2. Open in Django Admin (access /admin website section) and add in Blog list the real blog name and status (enabled/disabled): http://prntscr.com/nnsoa8 (ref: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/)
 3. Make an endpoint for create a blog post (similar as register endpoint) that will add a new record in blog table (ref: https://www.django-rest-framework.org/api-guide/generic-views/#genericapiview)
 4. Create a new model ```Comments``` with ```text``` and ```blog``` foreign key, here we will save comments for each blog post.
-5. Add Comments for management in Django Admin (ref: https://docs.djangoproject.com/en/3.2/ref/contrib/admin/#modeladmin-objects)
+5. Add Comments for management in Django Admin (ref: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/#modeladmin-objects)
 6. Create an endpoint that creates a comment to a blog post (input: blog_id, text)
 7. In endpoint ```/blog/blog/{id}``` return the Blog post object and list of comments.
 
@@ -74,13 +76,13 @@ You need to set up DB, DRF and Swagger to build a beautiful API.
 #### Task description:
 
 These screens will help you to imagine the app:
-1. List: https://prnt.sc/1q9sn7i
-2. Create: http://prntscr.com/novbj8
-3. View: http://prntscr.com/novbth
+1. [List](https://github.com/ebs-integrator/ebs-python-internship-test/blob/master/static/list.png)
+2. [Create](https://github.com/ebs-integrator/ebs-python-internship-test/blob/master/static/create.png)
+3. [View](https://github.com/ebs-integrator/ebs-python-internship-test/blob/master/static/view.png)
 
 #### Tasks:
 
-1. Create a new django project with the same file structure like previous project (ref: https://docs.djangoproject.com/en/4.0/intro/tutorial01/)
+1. Create a new django project with the same file structure like previous project (ref: https://docs.djangoproject.com/en/4.2/intro/tutorial01/)
 2. Copy "common" and "users" apps from previous project and start the project
 3. Create Register endpoint - user send first name, last name, email, password and receive JWT token for authentication
 4. Create Login endpoint - user send email, password and receive JWT token for authentication
@@ -110,7 +112,7 @@ User will start time when start working on task and stop it when complete the ta
 #### What will you learn
 
 1. How to work with relational entities
-2. How to create complex database queries (https://docs.djangoproject.com/en/3.2/topics/db/queries/)
+2. How to create complex database queries (https://docs.djangoproject.com/en/4.2/topics/db/queries/)
 
 #### Tasks
 
@@ -130,15 +132,15 @@ In this milestone we start to improve our application.
 
 1. How to work increase quality of you app and identify bugs
 2. How to install and switch project to PostgreSQL database and use pgHero
-3. How to findout performance issues and improve response time of your endpoints with cache
+3. How to find out performance issues and improve response time of your endpoints with cache
 4. How to work with Docker
 
 #### Tasks
 
 1. Add unit tests for each endpoint https://www.django-rest-framework.org/api-guide/testing/
-2. Add coverage package and generate report to be sure in 100% test coverage https://docs.djangoproject.com/en/3.2/topics/testing/advanced/#integration-with-coverage-py
+2. Add coverage package and generate report to be sure in 100% test coverage https://docs.djangoproject.com/en/4.2/topics/testing/advanced/#integration-with-coverage-py
 3. Install PostgreSQL docker container and move your app on PostgreSQL (edit settings.py)
-4. Create a script that will add random 25.000 tasks and 50.000 time logs (use https://docs.djangoproject.com/en/4.0/howto/custom-management-commands/)
+4. Create a script that will add random 25.000 tasks and 50.000 time logs (use https://docs.djangoproject.com/en/4.2/howto/custom-management-commands/)
 5. Install PGHero docker container and connect it to your db https://github.com/ankane/pghero/blob/master/guides/Docker.md
 6. Manual test all endpoints and check with PGHero that all sql queries use db indexes, after insert of thousands of tasks some endpoints can perform slow
 7. Install Redis docker container and configure Django to cache with 1 minute TTL the endpoint with Top 20 tasks by time for each user https://github.com/jazzband/django-redis

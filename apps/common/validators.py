@@ -3,12 +3,11 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework.exceptions import ValidationError
 
 
-# Create your validators here.
-
-
 @deconstructible
 class CustomNumericValidator:
     """
+    This is example of custom validator.
+
     Validate that the input is a valid numeric value.
 
     Usage example:

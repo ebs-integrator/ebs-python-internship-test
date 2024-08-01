@@ -1,48 +1,40 @@
-FROM python:3.10
+FROM python:3.12.4-slim
+
+WORKDIR /code
 
 # Install missing libs
-RUN apt-get  update \
-    && apt-get install -y  curl libpq-dev gcc python3-cffi git && \
-apt-get clean autoclean && \
-apt-get autoremove --purge -y && \
-rm -rf /var/lib/apt/lists/* && \
-rm -f /var/cache/apt/archives/*.deb
+RUN apt-get  update
 
-# Creating Application Source Code Directory
-RUN mkdir -p /usr/app
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=off \
+    PIP_DISABLE_PIP_VERSION_CHECK=on \
+    PIP_DEFAULT_TIMEOUT=100
 
-# Setting Home Directory for containers
-WORKDIR /usr/app
+# Install gunicorn
+RUN pip install --upgrade pip && \
+    pip install gunicorn gunicorn[gevent]
 
-# Installing python dependencies
-COPY requirements.txt /usr/app
-RUN pip install --no-cache-dir -r requirements.txt
-RUN pip install gunicorn
+# Install poetry \
+RUN pip install poetry
 
-# Cleanup
-RUN rm -rf /var/lib/apt/lists/*
-RUN rm -rf /root/.cache/*
-RUN rm -rf /tmp/*
-RUN apt-get -y autoremove --purge && apt-get -y autoclean && apt-get -y clean
-RUN rm -rf /usr/share/man/*
-RUN rm -rf /usr/share/doc/*
-RUN find /var/lib/apt -type f | xargs rm -f
-RUN find /var/cache -type f -exec rm -rf {} \;
-RUN find /var/log -type f | while read f; do echo -ne '' > $f; done;
+COPY poetry.lock pyproject.toml /code/
 
-# Copying src code to Container
-COPY . /usr/app
-RUN pip install --no-cache-dir -r requirements.txt
+# Install dependencies
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-interaction --no-ansi
+
+# Copy the rest of the code
+COPY . /code/
 
 # Exposing Ports
 EXPOSE 8000
 
 # Environemnt variables
-ENV DJANGO_ENV  development
-ENV GUNICORN_BIND  0.0.0.0:8000
-ENV GUNICORN_WORKERS 4
-ENV GUNICORN_WORKERS_CONNECTIONS 1001
+ENV DJANGO_SETTINGS_MODULE=config.settings GUNICORN_BIND=0.0.0.0:8000 GUNICORN_WORKERS=4 GUNICORN_THREADS=2 GUNICORN_TIMEOUT=300 GUNICORN_LOG_LEVEL=info
+
+
+COPY /startup.sh /code
 
 # Running Python Application
-CMD python manage.py runserver 0.0.0.0:8000
-#CMD gunicorn --workers=${GUNICORN_WORKERS} config.wsgi:application -b ${GUNICORN_BIND} --log-level info
+CMD bash startup.sh
