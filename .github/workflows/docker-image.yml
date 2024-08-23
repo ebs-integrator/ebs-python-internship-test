@@ -19,10 +19,12 @@ jobs:
         run: |
             echo "DOCKER_IMAGE=${{ vars.ACR }}/web-${{ vars.ENV }}" >> $GITHUB_ENV
 
-      - name: Azure Login
-        uses: Azure/login@v2.1.1
+      - name: Azure Container Registry login
+        uses: azure/docker-login@v2
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          login-server: ${{  env.ACR  }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
 
       - name: Build and push Docker image
         run: |
