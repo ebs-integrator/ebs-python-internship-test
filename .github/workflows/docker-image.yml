@@ -1,4 +1,4 @@
-name: CI/CD Pipeline
+name: CI/CD Pipeline 24markets web
 
 on:
   push:
@@ -19,8 +19,66 @@ jobs:
         run: |
             echo "DOCKER_IMAGE=${{ vars.ACR }}/web-${{ vars.ENV }}" >> $GITHUB_ENV
 
+      - name: Azure Login
+        uses: Azure/login@v2.1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Build and push Docker image
         run: |
-          cp .env.${{ vars.BRANCH_ENV }} .env
-          docker build -f Dockerfile -t ${{ env.DOCKER_IMAGE }}:latest -t ${{ env.DOCKER_IMAGE }}:$GITHUB_SHA .
+          cp .env.${{ vars.ENVIRONMENT }} .env
+          docker build --build-arg BUILDKIT_INLINE_CACHE=1 --build-arg RELEASE=$GITHUB_SHA \
+            --cache-from ${{ env.DOCKER_IMAGE }}:latest -f Dockerfile -t ${{ env.DOCKER_IMAGE }}:latest -t ${{ env.DOCKER_IMAGE }}:$GITHUB_SHA .
           echo "${{ env.DOCKER_IMAGE }}:$GITHUB_SHA"
+          echo "Pushing image to ${{ env.DOCKER_IMAGE }}"
+          docker push ${{ env.DOCKER_IMAGE }}:latest
+          docker push ${{ env.DOCKER_IMAGE }}:$GITHUB_SHA
+
+  deploy:
+    permissions:
+      actions: read
+      contents: read
+      id-token: write
+    name: Deploy Helm Charts
+    needs: build
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || github.ref == 'refs/heads/develop' && 'development' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+
+      # Logs in with your Azure credentials
+      - name: Azure Login
+        uses: Azure/login@v2.1.1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Use kubelogin to configure your kubeconfig for Azure auth
+      - name: Set up kubelogin for non-interactive login
+        uses: azure/use-kubelogin@v1
+        with:
+          kubelogin-version: 'v0.0.25'
+
+      # Retrieves your Azure Kubernetes Service cluster's kubeconfig file
+      - name: Get K8s context
+        uses: azure/aks-set-context@v3
+        with:
+          resource-group: ${{ vars.RESOURCE_GROUP }}
+          cluster-name: ${{ vars.CLUSTER_NAME }}
+          admin: 'false'
+          use-kubelogin: 'true'
+
+      - name: Set Environment Variables Based on Branch
+        run: |
+            echo "DOCKER_IMAGE=${{ vars.ACR }}/web-${{ vars.ENV }}" >> $GITHUB_ENV
+
+      - name: Deploy Helm
+        run: |
+          helm upgrade --install web devops/helm \
+            --namespace ${{ vars.K8S_NAMESPACE }} \
+            --values devops/helm/env/${{ vars.VALUES_FILE }} \
+            --set image.repository=${{ env.DOCKER_IMAGE }} \
+            --set image.tag=$GITHUB_SHA \
+            --set imageCredentials.username=${{ secrets.ACR_USERNAME }} \
+            --set imageCredentials.password=${{ secrets.ACR_PASSWORD }} \
+            --atomic --timeout 5m0s
