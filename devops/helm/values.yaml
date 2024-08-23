@@ -1,0 +1,101 @@
+# Default values for web.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+namespace: 24markets
+
+image:
+  repository: web24markets.azurecr.io
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "latest"
+
+imagePullSecrets:
+  - name: web-image-registry-secret
+
+imageCredentials:
+  name: web-image-registry-secret
+  registry: web24markets.azurecr.io
+  username: web-project-secret
+  password: web-password
+
+nameOverride: "web"
+fullnameOverride: "web"
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+podAnnotations: {}
+podLabels:
+  environment: dev
+  project: web
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    cert-manager.io/cluster-issuer: cluster-issuer
+    cert-manager.io/subject-organizations: 24Markets
+    cert-manager.io/subject-organizationalunits: DevOps
+    cert-manager.io/subject-countries: Moldova
+    cert-manager.io/subject-localities: Chisinau
+  hosts:
+    - host: dev.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: api.example-project-dev-tls
+  #    hosts:
+  #      - apiexample-project-dev.local
+
+resources:
+  limits:
+    cpu: 300m
+    memory: 500Mi
+  requests:
+    cpu: 70m
+    memory: 70Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+
+volumeMounts: []
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+

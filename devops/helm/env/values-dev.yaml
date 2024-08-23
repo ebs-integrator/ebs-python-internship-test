@@ -1,0 +1,22 @@
+---
+imageCredentials:
+  registry: 24markets.azurecr.io
+  username: user
+  password: pass
+
+image:
+  repository: 24markets.azurecr.io
+  tag: "latest"
+
+ingress:
+  annotations:
+    cert-manager.io/cluster-issuer: acme-production
+  hosts:
+  - host: 24markets.prod.devebs.net
+    paths:
+    - path: /
+      pathType: Prefix
+  tls:
+  - secretName: web-24markets-prod-tls
+    hosts:
+      - 24markets.prod.devebs.net
