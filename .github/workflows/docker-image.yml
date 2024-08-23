@@ -1,0 +1,26 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+jobs:
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref == 'refs/heads/main' && 'production' || github.ref == 'refs/heads/develop' && 'development' }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+
+      - name: Set Environment Variables Based on Branch
+        run: |
+            echo "DOCKER_IMAGE=${{ vars.ACR }}/web-${{ vars.ENV }}" >> $GITHUB_ENV
+
+      - name: Build and push Docker image
+        run: |
+          cp .env.${{ vars.BRANCH_ENV }} .env
+          docker build -f Dockerfile -t ${{ env.DOCKER_IMAGE }}:latest -t ${{ env.DOCKER_IMAGE }}:$GITHUB_SHA .
+          echo "${{ env.DOCKER_IMAGE }}:$GITHUB_SHA"
