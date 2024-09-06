@@ -5,8 +5,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from apps.blog.models import Blog, Category
-from apps.blog.serializers import BlogSerializer, CategorySerializer
+from apps.blog.models import Blog, Category, Comment
+from apps.blog.serializers import BlogSerializer, CategorySerializer, CommentSerializer
 from apps.common.permissions import ReadOnly
 
 
@@ -39,3 +39,8 @@ class BlogItemView(GenericAPIView):
     def get(self, request: Request, pk: int) -> Response:
         blog: Blog = get_object_or_404(Blog.objects.all(), pk=pk)
         return Response(self.get_serializer(blog).data)
+
+
+class CommentViewSet(viewsets.ModelViewSet):
+    serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
