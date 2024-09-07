@@ -3,40 +3,14 @@
 This repository contains a base project for internship program at EBS Integrator, each candidate for position of Junior
 Backend Developer must be able to develop all the tasks in the following lists. Fork it and bring it to the next level.
 
-### Workflow
-
-1. Before starting this program you should know Python or another programming language at a level beginner, and
-   understand syntax, variables, functions, algorithms, etc. If you have lacked in language understanding then start
-   with https://www.learnpython.org/
-2. First milestone is to prove that you are ready for internship program
-3. Before each milestone estimate each task in hours of work to understand how much time you need to achieve the finish,
-   don't worry if your estimations are wrong because you don't have experience.
-4. After each milestone or sequence of tasks create a merge request to your mentor to receive feedback, after code
-   review you will have something to fix this will improve your coding skills
-5. Stay focused on tasks and ask questions if you don't understand something and can't find it on Google (googling is a
-   basic skill for developers).
-
-#### References
-
-1. https://www.djangoproject.com/ - official documentation of Django framework
-2. https://www.django-rest-framework.org/ - documentation of DRF, an package for Django to transform it in a full REST
-   API framework
-3. https://restfulapi.net/ - documentation about REST APIs communication standard
-4. https://github.com/ebs-integrator/rest-api-guide - A short REST API guide used in the company
-5. https://swagger.io/docs/specification/2-0/what-is-swagger/
-6. https://github.com/HackSoftware/Django-Styleguide - A styleguide for Django developers
-7. https://www.django-antipatterns.com/ - A resource with most frequent mistakes in Django development
-
 #### Project requirements
 
 * [Python 3.12](https://docs.python.org/3.12)
 * [Django 4.2](https://docs.djangoproject.com/en/4.2)
 
-### First steps to run the project
+## Setup
 
 Some steps before start work on tasks.
-
-https://docs.djangoproject.com/en/4.2/intro/install/
 
 1. Install poetry ```pip install poetry```
 2. Install python requirements ```poetry install```
