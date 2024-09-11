@@ -4,8 +4,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from apps.blog.models import Blog, Category
-from apps.blog.serializers import BlogSerializer, CategorySerializer
+from apps.blog.models import Blog, Category, Comment
+from apps.blog.serializers import BlogSerializer, CategorySerializer, CommentCreateSerializer, CommentSerializer
 from apps.common.permissions import ReadOnly
 
 
@@ -28,8 +28,12 @@ class BlogItemView(GenericAPIView):
     permission_classes = (ReadOnly, IsAuthenticated)
 
     def get(self, request: Request, pk: int) -> Response:
-        blog: Blog = get_object_or_404(Blog.objects.all(), pk=pk)
-        return Response(self.get_serializer(blog).data)
+        blog = get_object_or_404(Blog, pk=pk)
+        comments = Comment.objects.filter(blog=blog)
+        blog_data = self.get_serializer(blog).data
+        comments_data = CommentSerializer(comments, many=True).data
+        response_data = {"blog": blog_data, "comments": comments_data}
+        return Response(response_data)
 
 
 class BlogCreateView(GenericAPIView):
@@ -41,3 +45,14 @@ class BlogCreateView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         blog = serializer.save()
         return Response(self.get_serializer(blog).data, status=status.HTTP_201_CREATED)
+
+
+class CommentCreateView(GenericAPIView):
+    serializer_class = CommentCreateSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request: Request) -> Response:
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        comment = serializer.save()
+        return Response(CommentSerializer(comment).data, status=status.HTTP_201_CREATED)
