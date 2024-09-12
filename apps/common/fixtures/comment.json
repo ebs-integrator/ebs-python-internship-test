@@ -1,0 +1,10 @@
+[
+    {
+      "model": "blog.Comment",
+      "pk": 1,
+      "fields": {
+        "body": "temp_comment",
+        "blog": 1
+      }
+    }
+  ]

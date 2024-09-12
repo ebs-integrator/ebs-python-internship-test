@@ -83,3 +83,23 @@ class CategoryTests(TestCase):
     def test_delete_not_found(self) -> None:
         response = self.client.delete(reverse("category-detail", kwargs={"pk": 100}))
         self.assertEqual(status.HTTP_404_NOT_FOUND, response.status_code)
+
+
+class CommentTests(TestCase):
+    fixtures = ["users", "blogs", "categories", "comment"]
+
+    def setUp(self) -> None:
+        self.client = APIClient()
+        # Get test user from bd and set it as authenticated user
+        user = User.objects.get(email="user1@email.com")
+        self.client.force_authenticate(user=user)
+
+    def test_create(self) -> None:
+        response = self.client.post(reverse("comment_create"), 
+        {
+            "body": "temp_comment_1", 
+            "blog": 1
+        })
+        self.assertEqual(status.HTTP_201_CREATED, response.status_code)
+        self.assertEqual("temp_comment", response.data["body"])
+        self.assertEqual(1, response.data["blog"])
