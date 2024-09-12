@@ -21,3 +21,10 @@ class Blog(models.Model):
 
     def __str__(self) -> str:
         return self.title + "   Status=" + str("Enabled" if self.enabled else "Disabled")
+
+class Comment(models.Model):
+    body = models.TextField()
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "Comments for Admin [blog.title]="+self.blog.title+ "     [comment.body]=" +self.body
