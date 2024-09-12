@@ -7,6 +7,13 @@ from rest_framework.test import APIClient
 
 class BlogTests(TestCase):
     fixtures = ["users", "blogs", "categories"]
+    request = {
+        "title": "temp_title",
+        "slug": "temp_slug",
+        "body": "temp_body",
+        "category": 1,
+        "enabled": True,
+    }
 
     def setUp(self) -> None:
         self.client = APIClient()
@@ -22,6 +29,20 @@ class BlogTests(TestCase):
         response = self.client.get(reverse("blog_list"))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(len(response.data), 1)
+
+    def test_create_blog(self) -> None:
+        response = self.client.post(reverse("blog_create"), self.request)
+        self.assertEqual(status.HTTP_201_CREATED, response.status_code)
+        self.assertEqual("temp_title", response.data["title"])
+        self.assertEqual("temp_body", response.data["body"])
+        self.assertEqual(1, response.data["category"])
+        self.assertEqual(True, response.data["enabled"])
+
+    def test_create_blog_with_title_duplicate(self) -> None:
+        self.client.post(reverse("blog_create"), self.request)
+        self.assertEqual(
+            status.HTTP_400_BAD_REQUEST, self.client.post(reverse("blog_create"), self.request).status_code
+        )
 
 
 class CategoryTests(TestCase):
