@@ -30,6 +30,8 @@ class CommentsSerializer(serializers.ModelSerializer):
 
 
 class BlogSerializer(serializers.ModelSerializer):
+    comments = CommentsSerializer(many=True, read_only=True, source="comments_set")
+
     class Meta:
         model = Blog
         fields = "__all__"
