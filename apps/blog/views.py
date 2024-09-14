@@ -5,7 +5,7 @@ from rest_framework.request import Request
 from rest_framework.response import Response
 
 from apps.blog.models import Blog, Category
-from apps.blog.serializers import BlogSerializer, CategorySerializer
+from apps.blog.serializers import BlogSerializer, CategorySerializer, CommentsSerializer
 from apps.common.permissions import ReadOnly
 
 
@@ -38,3 +38,14 @@ class BlogCreatePost(mixins.CreateModelMixin, generics.GenericAPIView):
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+
+class CommentsCreateView(GenericAPIView):
+    serializer_class = CommentsSerializer
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        # comment = serializer.save()
+        return Response(serializer.data)
