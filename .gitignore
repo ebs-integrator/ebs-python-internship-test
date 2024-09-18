@@ -6,3 +6,11 @@ db.sqlite3
 .coverage
 htmlcov/*
 .mypy_cache/
+
+# Static files
+static/*
+!static/blog_list.png
+!static/create.png
+!static/list.png
+!static/view.png
+
