@@ -27,6 +27,20 @@ jobs:
           pipx install poetry
           poetry install
 
-      - name: Run tests
+      - name: Run tests with coverage
         run: |
-          poetry run python manage.py test
+          poetry run coverage run manage.py test
+          poetry run coverage xml
+          poetry run coverage html
+
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-html-report
+          path: htmlcov/
+
+      - name: Display coverage
+        uses: ewjoachim/coverage-comment-action@v1
+        with:
+          GITHUB_TOKEN: ${{ github.token }}
+          COVERAGE_FILE: "coverage.xml"
