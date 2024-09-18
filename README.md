@@ -64,7 +64,7 @@ We start with some changes to understand the project code
 1. Add in Blog model a boolean field ```enabled``` to make some posts published or unpublished (
    ref: https://docs.djangoproject.com/en/4.2/ref/models/fields/#booleanfield)
 2. Open in Django Admin (access /admin website section) and add in Blog list the real blog name and status (
-   enabled/disabled): http://prntscr.com/nnsoa8 (ref: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/)
+   enabled/disabled): [Preview](https://github.com/ebs-integrator/ebs-python-internship-test/blob/master/static/blog_list.png) (ref: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/)
 3. Make an endpoint for create a blog post (similar as register endpoint) that will add a new record in blog table (
    ref: https://www.django-rest-framework.org/api-guide/generic-views/#genericapiview)
 4. Create a new model ```Comments``` with ```text``` and ```blog``` foreign key, here we will save comments for each
@@ -72,7 +72,7 @@ We start with some changes to understand the project code
 5. Add Comments for management in Django Admin (
    ref: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/#modeladmin-objects)
 6. Create an endpoint that creates a comment to a blog post (input: blog_id, text)
-7. In endpoint ```/blog/blog/{id}``` return the Blog post object and list of comments.
+7. In endpoint ```/blog/{id}``` return the Blog post object and list of comments.
 
 ### Milestone 2
 
