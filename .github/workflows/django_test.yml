@@ -34,6 +34,13 @@ jobs:
       - name: Run tests with coverage
         run: |
           poetry run coverage run manage.py test
+
+      - name: Display coverage report
+        run: |
+          poetry run coverage report
+
+      - name: Generate coverage reports
+        run: |
           poetry run coverage xml
           poetry run coverage html
 
@@ -42,9 +49,3 @@ jobs:
         with:
           name: coverage-html-report
           path: htmlcov/
-
-      - name: Display coverage
-        uses: ewjoachim/coverage-comment-action@v1
-        with:
-          GITHUB_TOKEN: ${{ github.token }}
-          COVERAGE_FILE: "coverage.xml"
