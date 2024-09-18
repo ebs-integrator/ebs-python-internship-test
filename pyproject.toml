@@ -8,13 +8,14 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
-django = "4.2.14"
+django = "4.2.16"
 djangorestframework = "3.15.2"
 djangorestframework-simplejwt = "5.3.1"
 django-cors-headers = "4.4.0"
 drf-spectacular = "0.27.2"
 pre-commit = "^3.8.0"
 ruff = "^0.5.5"
+coverage = "^7.6.1"
 
 
 [build-system]
@@ -53,3 +54,19 @@ indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
 
+
+[tool.coverage.run]
+omit = [
+    "*/tests.py",
+    "*/__init__.py",
+    "*/admin.py",
+    "*/apps.py",
+    "*/urls.py",
+    "*/wsgi.py",
+    "*/asgi.py",
+    "*/settings.py",
+    "*/manage.py",
+    "*/celery.py",
+    "*/migrations.py",
+    "*/migrations/*",
+]
