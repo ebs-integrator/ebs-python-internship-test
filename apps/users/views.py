@@ -18,18 +18,6 @@ class RegisterUserView(GenericAPIView):
         serializer.is_valid(raise_exception=True)
         validated_data = serializer.validated_data
 
-        # Get password from validated data
-        password = validated_data.pop("password")
-
         # Create user
-        user = User.objects.create(
-            **validated_data,
-            is_superuser=True,
-            is_staff=True,
-        )
-
-        # Set password
-        user.set_password(password)
-        user.save()
-
+        user = User.objects.create_user(**validated_data)
         return Response(self.serializer_class(user).data)
