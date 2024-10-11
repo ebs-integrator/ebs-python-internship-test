@@ -64,7 +64,8 @@ We start with some changes to understand the project code
 1. Add in Blog model a boolean field ```enabled``` to make some posts published or unpublished (
    ref: https://docs.djangoproject.com/en/4.2/ref/models/fields/#booleanfield)
 2. Open in Django Admin (access /admin website section) and add in Blog list the real blog name and status (
-   enabled/disabled): [Preview](https://github.com/ebs-integrator/ebs-python-internship-test/blob/master/static/blog_list.png) (ref: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/)
+   enabled/disabled): [Preview](https://github.com/ebs-integrator/ebs-python-internship-test/blob/master/static/blog_list.png) (
+   ref: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/)
 3. Make an endpoint for create a blog post (similar as register endpoint) that will add a new record in blog table (
    ref: https://www.django-rest-framework.org/api-guide/generic-views/#genericapiview)
 4. Create a new model ```Comments``` with ```text``` and ```blog``` foreign key, here we will save comments for each
@@ -98,27 +99,47 @@ These screens will help you to imagine the app:
 
 1. Create a new django project with the same file structure like previous project (
    ref: https://docs.djangoproject.com/en/4.2/intro/tutorial01/)
-2. Copy "common" and "users" apps from previous project and start the project
-3. Create Register endpoint - user send first name, last name, email, password and receive JWT token for authentication
-4. Create Login endpoint - user send email, password and receive JWT token for authentication
-5. Get list of users endpoint - user receive a list with id and full name of all users from application
-6. Create a new "tasks" app that will have Task model with title, description and status fields
-7. Create a task endpoint - user send title, description and receive new task id, the new task is assigned to current
+2. Install poetry and pre-commit hook as in previous project
+3. Copy "common" and "users" apps from previous project and start the project
+4. Create Register endpoint - user send first name, last name, email, password and receive JWT access token and refresh
+   token for authentication.
+
+   Example:
+   ```json
+   {
+       "access": "eyJ...",
+       "refresh": "eyJ..."
+   }
+   ```
+5. Create Login endpoint - user send email, password and receive JWT access token and refresh
+   token for authentication.
+
+   Example:
+    ```json
+    {
+         "access": "eyJ...",
+         "refresh": "eyJ..."
+    }
+    ```
+6. Get list of users endpoint - user receive a list with id and full name of all users from application
+7. Create a new "tasks" app that will have Task model with title, description and status fields(Choices: Open, In
+   Progress, Completed, Canceled, Archived)
+8. Create a task endpoint - user send title, description and receive new task data, the new task is assigned to current
    user
-8. View list of tasks - user receive a list with id and title of all created tasks from application
-9. View task details by id - user send task_id and receive task details: id, title, description, status, owner
-10. View my tasks - user receive a list with id and title of tasks assigned to him
-11. View Completed tasks - user receive a list with id and title of tasks with status completed
-12. Assign a task to user - user send task_id and user_id and receive successful response after update task owner
-13. Complete a task - user send task_id and receive successful response after update of task status in completed
-14. Remove task - user send task_id and receive successful response after task deletion
-15. Create a new "Comment" model in "tasks" app
-16. Add comment to task - user send task_id, comment text and receive id of the new comment
-17. View task comments - user send task id and receive list of all comments added to this task
-18. Add email notification when task is assigned to me
-19. Add email notification when my task is commented
-20. Add email notification when commented task is completed
-21. Search task by title - user send search term and receive list of tasks that match
+9. View list of tasks - user receive a list with id and title of all created tasks from application
+10. View task details by id - user send task_id and receive task details: id, title, description, status, owner
+11. Add filter by user_id in get list of tasks endpoint to receive tasks assigned to specific user
+12. Add status filter in get list of tasks endpoint to receive tasks with specific status
+13. Assign a task to user - user send task_id and user_id and receive successful response after update task owner
+14. Complete a task - user send task_id and receive successful response after update of task status in completed
+15. Remove task - user send task_id and receive successful response after task deletion
+16. Create a new "Comment" model in "tasks" app
+17. Add comment to task - user send task_id, comment text and receive id of the new comment
+18. View task comments - user send task id and receive list of all comments added to this task
+19. Add email notification when task is assigned to me
+20. Add email notification when my task is commented
+21. Add email notification when commented task is completed
+22. Search task by title - user send search term and receive list of tasks that match
 
 ### Milestone 3
 
