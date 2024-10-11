@@ -66,6 +66,5 @@ omit = [
     "*/settings.py",
     "*/manage.py",
     "*/celery.py",
-    "*/migrations.py",
     "*/migrations/*",
 ]
