@@ -191,6 +191,37 @@ In this milestone we start to improve our application.
    for each user https://github.com/jazzband/django-redis
 8. Create Dockerfile for your application to run it with docker-compose command
 
+### Milestone 5
+
+In this milestone we will improve the application with new features and third-party services.
+
+#### What will you learn
+
+1. How to work with MinIO (S3 compatible storage)
+2. How to work with celery and redis
+3. How to work with django signals
+4. How to use django templates
+5. How to work with elastic search
+6. How to integrate third-party authentication
+7. How to setup github actions for CI/CD
+
+#### Tasks
+
+1. Use MinIO as static and media storage for your application https://pypi.org/project/django-minio-backend/
+2. Create a new model "Attachment" with file field and task foreign key (use MinIO for storage)
+3. Add attachment to task - user send task_id and file and receive successful response after adding attachment to task
+4. Get list of attachments by task - user send task_id and receive list of all attachments added to this task
+5. Send all email notifications with celery https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html
+6. Create celery beat task that will create a report with top 20 tasks by time for each user using Django templates and
+   send it by email to each user one time per week
+7. Create a signal handler that will create a new task in elastic search when task or comment is created or
+   updated https://elasticsearch-dsl.readthedocs.io/en/latest/
+8. Create endpoint that will search by choosing task field or comment in elastic
+   search
+9. Add third-party authentication with GitHub https://django-allauth.readthedocs.io/en/latest/
+10. Add all this to your docker-compose file and test it
+11. Create a github action that will run ruff lint and tests on each pull request https://github.com/features/actions
+
 ## Congratulations!
 
 Congratulations on your job well done. We appreciate your dedication, and we look forward to seeing your career
