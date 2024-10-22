@@ -203,6 +203,7 @@ In this milestone we will improve the application with new features and third-pa
 4. How to use django templates
 5. How to work with elastic search
 6. How to integrate third-party authentication
+7. How to setup github actions for CI/CD
 
 #### Tasks
 
@@ -219,6 +220,7 @@ In this milestone we will improve the application with new features and third-pa
    search
 9. Add third-party authentication with GitHub https://django-allauth.readthedocs.io/en/latest/
 10. Add all this to your docker-compose file and test it
+11. Create a github action that will run ruff lint and tests on each pull request
 
 ## Congratulations!
 
