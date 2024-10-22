@@ -220,7 +220,7 @@ In this milestone we will improve the application with new features and third-pa
    search
 9. Add third-party authentication with GitHub https://django-allauth.readthedocs.io/en/latest/
 10. Add all this to your docker-compose file and test it
-11. Create a github action that will run ruff lint and tests on each pull request
+11. Create a github action that will run ruff lint and tests on each pull request https://github.com/features/actions
 
 ## Congratulations!
 
