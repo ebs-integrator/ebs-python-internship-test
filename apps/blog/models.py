@@ -13,4 +13,10 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=255, unique=True)
     body = models.TextField()
     posted = models.DateField(db_index=True, auto_now_add=True)
+    enabled = models.BooleanField(default=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+
+class Comment(models.Model):
+    text = models.CharField(max_length=1023, db_index=True)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name="comments")
