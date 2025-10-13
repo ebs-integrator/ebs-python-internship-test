@@ -22,6 +22,13 @@ class BlogListView(GenericAPIView):
         blogs = Blog.objects.all()
         return Response(self.get_serializer(blogs, many=True).data)
 
+    def post(self, request: Request) -> Response:
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        validated_data = serializer.validated_data
+        blog = Blog.objects.create(**validated_data)
+        return Response(self.serializer_class(blog).data)
+
 
 class BlogItemView(GenericAPIView):
     serializer_class = BlogSerializer
