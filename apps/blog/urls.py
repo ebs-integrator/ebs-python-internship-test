@@ -13,5 +13,6 @@ router.register(
 urlpatterns = [
     path("blog", BlogListView.as_view(), name="blog_list"),
     path("blog/<int:pk>", BlogItemView.as_view(), name="blog_item"),
+    path("blog/<int:blog_id>/comments/", BlogItemView.as_view(), name="blog_comments"),
     *router.urls,
 ]
