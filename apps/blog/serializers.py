@@ -1,3 +1,5 @@
+from tokenize import Comment
+
 from rest_framework import serializers
 
 from apps.blog.models import Blog, Category
@@ -12,4 +14,10 @@ class CategorySerializer(serializers.ModelSerializer):
 class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
+        fields = "__all__"
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
         fields = "__all__"
