@@ -30,3 +30,16 @@ class BlogItemView(GenericAPIView):
     def get(self, request: Request, pk: int) -> Response:
         blog: Blog = get_object_or_404(Blog.objects.all(), pk=pk)
         return Response(self.get_serializer(blog).data)
+
+
+class BlogCreateView(GenericAPIView):
+    serializer_class = BlogSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request: Request) -> Response:
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+
+        blog = Blog.objects.create(**serializer.validated_data)
+
+        return Response(self.serializer_class(blog).data)
